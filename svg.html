@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset='utf-8'>
+		<title>SVG Assignment Jacob Reamer</title>
+		<style>
+ 		.top_circle, .bottom_circle {
+        opacity: 0.6;
+      }
+
+      .top_circle:hover, .bottom_circle:hover {
+        opacity: 1;
+      }
+
+      .top_circle:active, .bottom_circle:active {
+        filter: url(#blurry);
+        opacity: 0.5;
+      }
+      .diamond1:active{
+			filter:url(#blurry);
+      }
+    
+      
+      .triangle1:hover{
+      		fill:green;
+      		filter:url(#hue_switch);
+
+      	}
+      
+
+		</style>
+		
+	</head>
+
+	<body>
+
+		<svg width='1100' height = '800'>
+	<!-- ******** -->
+			<defs>
+				<filter id='blurry'>
+	 				<feGaussianBlur in='SourceGraphic' stdDeviation='5' />
+	 			</filter>
+	 		</defs>
+	 		<defs>
+				<filter id='my-filter' x ='0' y='0'>
+					
+					<!-- <feColorMatrix type='saturate' values='5' /> -->
+					<feMorphology operator='dilate' radius ='10' />
+					
+				</filter>
+				<filter id ='hue_switch' x ='0', y='0'>
+					<feColorMatrix type='hueRotate' values='90' />
+				</filter>
+
+			</defs>
+			<defs>
+				<linearGradient id='gradient1' x1="0%" y1="0%" x2="100%" y2='0%'>
+					<stop offset='0%' stop-color="cyan" stop-opacity='0.8' />
+					<stop offset='100%' stop-color="yellow" stop-opacity='0.8'/>
+				</LinearGreadient>
+			</defs>
+			<defs>
+				<linearGradient id='gradient2' x1="0%" y1="0%" x2="100%" y2='100%'>
+					<stop offset='0%' stop-color="cyan" stop-opacity='0.8' />
+					<stop offset='100%' stop-color="magenta" stop-opacity='0.8'/>
+				</LinearGreadient>
+			</defs>
+
+		<g id='squares' >
+			<a xlink:href="http://i6.cims.nyu.edu/~jmr760/380/">
+
+			<rect class='diamond1' x ='30' y = '130' width= '240' height = '240' fill='url(#gradient2)' 
+
+			filter ='url(#my-filter)' >
+			<animateTransform
+						attributeName='transform'
+						begin='0s'
+						dur='10s'
+						from='0 30 130'
+						to='-90 230 130'
+						type='rotate'
+						repeatCount='0' />
+			<set attributeName="x" attributeType="XML" to='230' begin='10s'/>
+			<set attributeName="y" attributeType="XML" to='80' begin='10s'/>
+
+			</rect>
+		</a>
+	</g>
+
+		<g id='circles' >
+			<a xlink:href="http://i6.cims.nyu.edu/~jmr760/380/assignment_1_svg/svg.html">
+			<circle class ='top_circle' cx='270' cy ='200' r = '120' fill='url(#gradient1)' fill-opacity = '0.7'>
+			<!-- 	TIMER -->
+			<!-- 	<set attributeName="r" attributeType="XML" to='60' begin='4s'/>
+				<set attributeName="r" attributeType="XML" to='120' begin='6s'/>
+				<set attributeName="r" attributeType="XML" to='180' begin='7s'/>
+				<set attributeName="r" attributeType="XML" to='120' begin='8s'/> -->
+		
+				<animate attributeName="r" attributeType="XML"
+					from="120" to="180"
+					begin="3.5s" dur='4s'
+					fill="remove" repeatCount="0" />
+				<animate attributeName="r" attributeType="XML"
+					from="180" to="120"
+					begin="7.5s" dur='4s'
+					fill="remove" repeatCount="0" />
+
+				<animate attributeName="cx" attributeType="XML"
+					from="0" to="270"
+					begin="0s" dur='3s'
+					fill="remove" repeatCount="0" />
+
+					<animateTransform
+						attributeName='transform'
+						begin='0s'
+						dur='3s'
+						from='0 270 200'
+						to='360 270 200'
+						type='rotate'
+						repeatCount='indefinite' />
+
+
+			</circle>
+
+			<circle class ='bottom_circle' cx='270' cy ='500' r = '120' fill='url(#gradient1)' fill-opacity = '0.7' >
+			<!-- 	TIMER -->
+			<!-- 	<set attributeName="r" attributeType="XML" to='180' begin='4s'/>
+				<set attributeName="r" attributeType="XML" to='120' begin='6s'/>
+				<set attributeName="r" attributeType="XML" to='60' begin='7s'/>
+				<set attributeName="r" attributeType="XML" to='120' begin='8s'/> -->
+				
+				<animate attributeName="r" attributeType="XML"
+					from="120" to="60"
+					begin="3.5s" dur='4s'
+					fill="remove" repeatCount="0" />
+
+				<animate attributeName="r" attributeType="XML"
+					from="60" to="120"
+					begin="7.5s" dur='4s'
+					fill="remove" repeatCount="0" />
+
+
+				<animate attributeName="cx" attributeType="XML"
+					from="0" to="270"
+					begin="0s" dur='3s'
+					fill="remove" repeatCount="0" />
+
+					<animateTransform
+						attributeName='transform'
+						begin='0s'
+						dur='3s'
+						from='0 270 500'
+						to='360 270 500'
+						type='rotate'
+						repeatCount='indefinite' />
+
+
+			</circle>
+		</a>
+		</g>
+
+		<g id='triangles' stroke='cyan' stroke-width='5'>
+			
+			<polygon class ='triangle1' points="400,30 270,270 520,270" fill='magenta' opacity="0.4" >
+				<animate attributeName="points" attributeType="XML"
+					from="400,30 400,270 400,270 " to="400,30 270,270 520,270"
+					begin="0s" dur='3s'
+					fill="remove" repeatCount="0" />
+				<animate attributeName="points" attributeType="XML"
+					from="400,30 270,270 520,270 " to="400,630 270,270 520,270"
+					begin="4s" dur='3s'
+					fill="remove" repeatCount="0" />
+				<animate attributeName="points" attributeType="XML"
+					from="400,630 270,270 520,270 " to="400,630 870,270 520,270"
+					begin="7s" dur='3s'
+					fill="remove" repeatCount="0" />
+				<animate attributeName="points" attributeType="XML"
+					from="400,630 870,270 520,270 " to="700,630 870,270 520,270"
+					begin="10s" dur='3s'
+					fill="remove" repeatCount="0" />
+				<set attributeName="points" attributeType="XML" to='700,630 870,270 520,270' begin='13s'/>
+				
+
+			</polygon>
+		</a>
+		</g>
+			<!-- <line x1='50' y1='150' x2='500' y2 = '150' stroke = 'black' stroke-width ='1' /> -->
+
+		</svg>
+
+
+	</body>
+</html>
